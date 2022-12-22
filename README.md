@@ -1,0 +1,2 @@
+# VremenskaPrognoza
+Django vremenska prognoza
