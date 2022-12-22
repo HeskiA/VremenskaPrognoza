@@ -1,0 +1,11 @@
+{% block content %}
+    <h2>Gradovi</h2>
+    <ul>
+        {% for grad in object_list %}
+            <li>
+                Grad: {{ grad.ime_grada }}<br>
+                Država: {{ grad.drzava }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

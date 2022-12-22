@@ -1,0 +1,15 @@
+{% block content %}
+    <h2>Trenutna stanja</h2>
+    <ul>
+        {% for el in object_list %}
+            <li>
+                Lokacija: {{ el.lokacija.ime }}<br>
+                Temperatura: {{ el.temperatura }} C<br>
+                Vlaga: {{ el.vlaga }} %<br>
+                Tlak: {{ el.tlak }} hPa<br>
+                Datum i vrijeme: {{ el.datum_i_vrijeme }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

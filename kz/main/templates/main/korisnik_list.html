@@ -1,0 +1,18 @@
+{% block content %}
+    <h2>Korisnici</h2>
+    <ul>
+        {% for el in object_list %}
+            <li>
+                Ime: {{ el.ime }}<br>
+                Prezime: {{ el.prezime }}<br>
+                Adresa e-pošte: {{ el.email }}<br>
+                Lokacije koje prati:<br>
+                {% for value in el.fav_lokacije.all %}
+                    {{ value }}
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
