@@ -17,13 +17,16 @@ class Lokacija(models.Model):
     grad = models.ForeignKey(Grad, on_delete=models.CASCADE)
     zem_sirina = models.CharField("Zemljopisna sirina", max_length=64)
     zem_duzina = models.CharField("Zemljopisna duzina", max_length=64)
+
+    def __str__(self):
+        return self.ime
     
 
 class Korisnik(models.Model):
 	# General
     ime = models.CharField("Ime", max_length=64)
     prezime = models.CharField("Prezime", max_length=64)
-    email = models.EmailField("Email", blank=True, null=True)
+    email = models.EmailField("Email", blank=False, null=False, unique=True)
     fav_lokacije = models.ManyToManyField(Lokacija, blank=True)
 
     def __str__(self):

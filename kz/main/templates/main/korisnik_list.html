@@ -1,3 +1,65 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+            
+</head>
+<nav class="navbar navbar-expand-lg" style="background-color: #34ebeb;border-radius: 25px;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><h3>Vremenska prognoza</h3></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Početna</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/gradovi">Gradovi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/lokacije">Lokacije</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/korisnici">Korisnici</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/trenutnavremena">Trenutna stanja</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/prognoze">Prognoze</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dodatno
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/dodajlokaciju">Dodaj lokaciju</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/favoriti/{{ user.username }}">Upravljaj favoritima</a></li>
+            </ul>
+          </li>
+          {% endif %}
+        </ul>
+        <div class="nav-link disabled" style="margin-right: 10pt;">
+            {% if user.is_authenticated %}
+                <br/>
+                <p>Vaše ime: {{ user.username }}</p>
+            {% else %}
+                <br/>
+                <p>Niste prijavljeni.</p>
+            {% endif %}
+        </div>
+        {% if user.is_authenticated %}
+            <a class="btn btn-danger" style="margin-right: 10pt;" href="/odjava">Odjava</a></br>
+        {% else %}
+            <a class="btn btn-success" style="margin-right: 10pt;" href="/accounts/login">Prijava</a></br>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
 {% block content %}
     <h2>Korisnici</h2>
     <ul>
